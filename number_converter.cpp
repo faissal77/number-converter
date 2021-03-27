@@ -1,51 +1,71 @@
 #include<iostream>
-#include<iomanip>
-#include<fstream>
 #include<math.h>
-#include<string>
 using namespace std;
+int length_n(int N)
+{	
+	int L;
+	while(N)
+	{
+		N=N/10;
+		L++;
+	}
+	return L;
+}
+int power(int x,int n)
+{
+	int i,p=1;
+	for(i=0;i<n;i++)
+	{
+		p=x*p;
+	}
+	return p;
+}
+void analyse(int F,int B[],int N)
+{
+	int i;
+    for(i=0;i<F;i++)
+	{
+		B[i]=(N/power(10,i))%10;	
+	}	
+}
 void binary()
 {
 	int Num,i,j;
 	int D[100];
-	cout<<"enter your decimal number : "<<endl;
+	cout<<"Enter your decimal number : "<<endl;
 	cin>>Num;
-	while(1)
+	while(Num)
 	{
 	D[j]=Num%2;
 	Num=(int)Num/2;
-	if (Num==0) break;
 	j++;
 	}
-	for(i=j;i>0;i--) cout<<D[i];
+	cout<<"Your number in binary is : ";
+	for(i=j-1;i>0;i--) cout<<D[i];
 	cout<<endl;
 }
 void decimal()
 {
-	int N,i,D,j;
+	int N,i,D,j,F;
 	D=0;
-	cout<<"how long is your number ? for exemple (1111) is 4 and (111) is 3 ... : "<<endl;
+	cout<<"Enter you binary number : "<<endl;
 	cin>>N;
-	int B[N];
-	cout<<"To enter your number start from left >> to right : " <<endl;
-	for(j=N-1;j>=0;j--)
-	{
-		cout<<"enter your number : "<<endl;
-		cin>>B[j];
-	}
-	for(i=N-1;i>=0;i--)cout<<B[i];
-	for(i=N-1;i>=0;i--)
+	F=length_n(N); 
+	int B[F];
+	analyse(F,B,N);
+	cout<<endl;
+	for(i=F-1;i>=0;i--)
 	{
 		D=D+B[i]*pow(2,i);
 	}
-	cout<<"  your number in decimal is "<<D<<endl;
+	cout<<" Your number in decimal is : "<<D<<endl;
 }
 main()
 {	
 	int choice;
 	while(1)
 	{
-		cout<<"convert from decimal to binary press 1 "<<endl<<"convert from binary to decimal press 2 "<<endl;
+		cout<<" #####  press 1  convert decimal ====>>>>> binary     ##### "<<endl<<endl<<" #####  press 2 to convert binary ====>>>>> decimal   ##### "<<endl<<endl<<" #####  press 3 to reset screen                       #####  "<<endl<<endl<<" #####  press 4 to exit                               ##### "<<endl ;
 		cin>>choice;
 		switch(choice)
 		{
@@ -53,7 +73,11 @@ main()
         break;
         case 2:decimal();
         break;
+        case 3:system("CLS");
+        break;
+        case 4:goto x;
         default:continue;
 		}
 	}
+	x:;
 }
