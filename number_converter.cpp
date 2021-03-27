@@ -1,7 +1,7 @@
 #include<iostream>
 #include<math.h>
 using namespace std;
-int length_n(int N)
+int length_n(int N) //This function is for determining the length of the number 
 {	
 	int L;
 	while(N)
@@ -11,7 +11,7 @@ int length_n(int N)
 	}
 	return L;
 }
-int power(int x,int n)
+int power(int x,int n)//This function is to rise the number x to the power n (x^n)
 {
 	int i,p=1;
 	for(i=0;i<n;i++)
@@ -20,7 +20,7 @@ int power(int x,int n)
 	}
 	return p;
 }
-void analyse(int F,int B[],int N)
+void analyse(int F,int B[],int N)//this function is to determine the length of the number
 {
 	int i;
     for(i=0;i<F;i++)
@@ -28,7 +28,7 @@ void analyse(int F,int B[],int N)
 		B[i]=(N/power(10,i))%10;	
 	}	
 }
-void binary()
+void binary() // this function convert from decimal to binary
 {
 	int Num,i,j;
 	int D[100];
@@ -44,7 +44,7 @@ void binary()
 	for(i=j-1;i>0;i--) cout<<D[i];
 	cout<<endl;
 }
-void decimal()
+void decimal() //this function convert from binary to decimal
 {
 	int N,i,D,j,F;
 	D=0;
@@ -63,7 +63,7 @@ void decimal()
 main()
 {	
 	int choice;
-	while(1)
+	while(1)//showing the user the options
 	{
 		cout<<" #####  press 1  convert decimal ====>>>>> binary     ##### "<<endl<<endl<<" #####  press 2 to convert binary ====>>>>> decimal   ##### "<<endl<<endl<<" #####  press 3 to reset screen                       #####  "<<endl<<endl<<" #####  press 4 to exit                               ##### "<<endl ;
 		cin>>choice;
